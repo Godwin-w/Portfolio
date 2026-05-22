@@ -1,0 +1,30 @@
+{% extends 'portfolio_web/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="coding-profiles-section">
+    <div class="container">
+        <h2 class="section-title">Coding Profiles</h2>
+        
+        <div class="profiles-grid">
+            {% for profile in profiles %}
+            <div class="profile-card">
+                <div class="profile-icon">
+                    <i class="{{ profile.icon_class }}"></i>
+                </div>
+                <h3>{{ profile.get_platform_display }}</h3>
+                <p class="username">@{{ profile.username }}</p>
+                {% if profile.description %}
+                    <p class="profile-description">{{ profile.description }}</p>
+                {% endif %}
+                <a href="{{ profile.profile_url }}" target="_blank" class="btn-visit">
+                    Visit Profile <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            {% empty %}
+            <p class="text-secondary" style="text-align: center; width: 100%;">Profiles coming soon.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

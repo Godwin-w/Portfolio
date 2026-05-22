@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portfolio | Python/Django Developer{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    
+    <!-- Force transparent background -->
+    <style>
+        html, body {
+            background-color: transparent !important;
+            background: transparent !important;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: transparent !important;">
+    <!-- Particle Background -->
+    <div id="particles-js" style="background-color: transparent !important;"></div>
+    
+    <!-- Navigation -->
+
+    <nav class="navbar">
+        <!-- Menu Overlay -->
+        
+        <div class="nav-container">
+            <div class="logo">
+                <a href="{% url 'portfolio_web:home' %}">Portfolio</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'portfolio_web:home' %}" data-page="home">Home</a></li>
+                <li><a href="{% url 'portfolio_web:about' %}" data-page="about">About</a></li>
+                <li><a href="{% url 'portfolio_web:projects' %}" data-page="projects">Projects</a></li>
+                <li><a href="{% url 'portfolio_web:skills' %}" data-page="skills">Skills</a></li>
+                <li><a href="{% url 'portfolio_web:coding_profiles' %}" data-page="coding-profiles">Coding Profiles</a></li>
+                <li><a href="{% url 'portfolio_web:contact' %}" data-page="contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+        
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="page-content" style="background-color: transparent;">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,77 @@
+{% extends 'portfolio_web/base.html' %}
+{% load static %}
+
+{% block title %}Home | Python/Django Developer{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+        <h1 class="glow-text">
+            Hi, I'm <span class="highlight">GODWIN</span>
+        </h1>
+        <h2 class="typing-title"></h2>
+        <p class="hero-description">
+            Passionate Python/Django Developer creating powerful 
+            web applications using modern technologies and AI tools, 
+            with a focus on clean design and user experience.
+        </p>
+        <div class="cta-buttons">
+            <a href="{% static 'images/resume.pdf' %}" download="Godwin_resume.pdf" class="btn btn-primary">
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+            <a href="{% url 'portfolio_web:projects' %}" class="btn btn-secondary">
+                <i class="fas fa-code"></i> View Projects
+            </a>
+            <a href="{% url 'portfolio_web:contact' %}" class="btn btn-tertiary">
+                <i class="fas fa-envelope"></i> Contact Me
+            </a>
+        </div>
+    </div>
+    
+    <!-- Floating Elements Only - No 3D Cube -->
+    <div class="floating-elements">
+        <div class="float-element"><i class="fab fa-python"></i></div>
+        <div class="float-element"><i class="fab fa-js"></i></div>
+        <div class="float-element"><i class="fab fa-django"></i></div>
+        <div class="float-element"><i class="fab fa-react"></i></div>
+        <div class="float-element"><i class="fab fa-node"></i></div>
+        <div class="float-element"><i class="fab fa-docker"></i></div>
+        <div class="float-element"><i class="fab fa-aws"></i></div>
+        <div class="float-element"><i class="fas fa-database"></i></div>
+        <div class="float-element"><i class="fab fa-github"></i></div>
+        <div class="float-element"><i class="fas fa-code"></i></div>
+        <div class="float-element"><i class="fab fa-python"></i></div>
+        <div class="float-element"><i class="fab fa-js-square"></i></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Typing animation only - No Three.js
+    var typed = new Typed('.typing-title', {
+        strings: ['Python Developer', 'Django Expert', 'Web Developer', 'Problem Solver'],
+        typeSpeed: 50,
+        backSpeed: 30,
+        loop: true
+    });
+    
+    // Additional floating element animations
+    const floatElements = document.querySelectorAll('.float-element');
+    floatElements.forEach((element, index) => {
+        // Add random rotation
+        const randomRotate = Math.random() * 360;
+        element.style.transform = `rotate(${randomRotate}deg)`;
+        
+        // Add hover effect
+        element.addEventListener('mouseenter', () => {
+            element.style.transform = `scale(1.3) rotate(${randomRotate}deg)`;
+            element.style.transition = 'all 0.3s ease';
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            element.style.transform = `scale(1) rotate(${randomRotate}deg)`;
+        });
+    });
+</script>
+{% endblock %}

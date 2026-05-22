@@ -1,0 +1,75 @@
+{% extends 'portfolio_web/base.html' %}
+{% load static %}
+
+{% block title %}Contact Me{% endblock %}
+
+{% block content %}
+<div class="contact-section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+        
+        <div class="contact-grid">
+            <div class="contact-info" data-aos="fade-right">
+                <h3>Let's Connect</h3>
+                
+                
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>Godwinw40@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+91 9488039353</p>
+                        <p>+91 9025706826</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Manalikarai,Kanniyakumari</p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/godwin-w" class="social-icon" data-aos="zoom-in"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/godwin._w_?igsh=MzB1bGdmZHplYWdm" class="social-icon" data-aos="zoom-in" data-aos-delay="100"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/Godwin-w" class="social-icon" data-aos="zoom-in" data-aos-delay="200"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            
+            <div class="contact-form" data-aos="fade-left">
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="form-group">
+                        {{ field }}
+                        {% if field.errors %}
+                        <div class="error">{{ field.errors }}</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    <button type="submit" class="btn-submit">
+                        Send Message <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+                
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
