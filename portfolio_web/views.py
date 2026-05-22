@@ -95,8 +95,8 @@ def contact(request):
                 )
                 messages.success(request, 'Your message has been sent successfully!')
             except Exception as e:
-                messages.error(request, 'There was an error sending your message. Please try again.')
-            
+                print(e)
+                messages.error(request, f'Error: {e}')
             return redirect('portfolio_web:contact')
     else:
         form = ContactForm()
