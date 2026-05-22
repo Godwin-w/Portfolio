@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.http import JsonResponse
 from .models import Project, Skill, CodingProfile
 from .forms import ContactForm
+from django.http import HttpResponse
 
 
 def home(request):
@@ -96,7 +97,7 @@ def contact(request):
                 messages.success(request, 'Your message has been sent successfully!')
             except Exception as e:
                 print(e)
-                messages.error(request, f'Error: {e}')
+                return HttpResponse(f"ERROR: {e}")
             return redirect('portfolio_web:contact')
     else:
         form = ContactForm()
